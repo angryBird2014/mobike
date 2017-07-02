@@ -15,13 +15,15 @@ def get_data():
 
     train = pd.read_csv(train_path)
 
+
+
     train['start_time'] = pd.to_datetime(train['starttime'])
-    train['start_year'] = train['start_time'].apply(lambda x:x.year)
-    train['start_month'] = train['start_time'].apply(lambda x:x.month)
-    train['start_day'] = train['start_time'].apply(lambda x: x.day)
-    train['start_hour'] = train['start_time'].apply(lambda x: x.hour)
-    train['start_minute'] = train['start_time'].apply(lambda x: x.minute)
-    train['start_second'] = train['start_time'].apply(lambda x: x.second)
+    train['start_year'] = train['start_time'].apply(lambda x:x.year).astype(np.int64)
+    train['start_month'] = train['start_time'].apply(lambda x:x.month).astype(np.int64)
+    train['start_day'] = train['start_time'].apply(lambda x: x.day).astype(np.int64)
+    train['start_hour'] = train['start_time'].apply(lambda x: x.hour).astype(np.int64)
+    train['start_minute'] = train['start_time'].apply(lambda x: x.minute).astype(np.int64)
+    train['start_second'] = train['start_time'].apply(lambda x: x.second).astype(np.int64)
 
     train.drop(['starttime'],axis=1,inplace=True)
 
@@ -39,13 +41,13 @@ def get_data():
     gc.collect()
 
     test = pd.read_csv(test_path)
-    test['start_time'] = pd.to_datetime(test['starttime'])
-    test['start_year'] = test['start_time'].apply(lambda x: x.year)
-    test['start_month'] = test['start_time'].apply(lambda x: x.month)
-    test['start_day'] = test['start_time'].apply(lambda x: x.day)
-    test['start_hour'] = test['start_time'].apply(lambda x: x.hour)
-    test['start_minute'] = test['start_time'].apply(lambda x: x.minute)
-    test['start_second'] = test['start_time'].apply(lambda x: x.second)
+    test['start_time'] = pd.to_datetime(test['starttime']).astype(np.str)
+    test['start_year'] = test['start_time'].apply(lambda x: x.year).astype(np.int64)
+    test['start_month'] = test['start_time'].apply(lambda x: x.month).astype(np.int64)
+    test['start_day'] = test['start_time'].apply(lambda x: x.day).astype(np.int64)
+    test['start_hour'] = test['start_time'].apply(lambda x: x.hour).astype(np.int64)
+    test['start_minute'] = test['start_time'].apply(lambda x: x.minute).astype(np.int64)
+    test['start_second'] = test['start_time'].apply(lambda x: x.second).astype(np.int64)
 
     test.drop(['starttime'], axis=1, inplace=True)
 
