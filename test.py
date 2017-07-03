@@ -22,7 +22,18 @@ def getmax_discert():
 def get_data():
     data = pickle.load(open('dump/train.pkl','rb'))
     print(len(data.columns))
+
+def test_zip():
+    a = [[1,2,3],[2,3,4]]
+    b= [2,3,4]
+    data = []
+    for x,y in zip(a,b):
+        data.append(x+[y])
+    print(data)
+    pass
 if __name__ == '__main__':
     #read_position()
     #read_center()
-    get_data()
+    #get_data()
+    test_zip()
+    pass
